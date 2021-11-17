@@ -50,13 +50,13 @@ public class CadActivity extends AppCompatActivity {
             activityCadBinding.AnoEt.setText(serie.getAno());
             activityCadBinding.GeneroEt.setText(serie.getGenero());
             activityCadBinding.EmissoraEt.setText(serie.getEmissora());
-            if(posicao == -1){
+           /* if(posicao == -1){
                 activityCadBinding.nomeEt.setEnabled(false);
                 activityCadBinding.AnoEt.setEnabled(false);
                 activityCadBinding.GeneroEt.setEnabled(false);
                 activityCadBinding.EmissoraEt.setEnabled(false);
                 activityCadBinding.salvar.setVisibility(View.GONE);
-            }
+            }*/
         }
     }
 }

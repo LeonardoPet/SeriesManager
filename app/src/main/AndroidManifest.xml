@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
         <activity
+            android:name=".CadastroEpisodioActivity"
+            android:exported="true" />
+        <activity
+            android:name=".CadastroTemporadaActivity"
+            android:exported="true" />
+        <activity
             android:name=".CadActivity"
             android:exported="true" />
         <activity

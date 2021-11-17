@@ -8,8 +8,11 @@
         <entry key="..\:/Users/User/MyApplication4/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.3828125" />
         <entry key="..\:/Users/User/MyApplication4/app/src/main/res/drawable/ic_launcher_background.xml" value="0.3828125" />
         <entry key="..\:/Users/User/MyApplication4/app/src/main/res/layout/activity_cad.xml" value="0.22988505747126436" />
+        <entry key="..\:/Users/User/MyApplication4/app/src/main/res/layout/activity_cad_temporada.xml" value="0.25" />
         <entry key="..\:/Users/User/MyApplication4/app/src/main/res/layout/activity_cadastro.xml" value="0.1" />
-        <entry key="..\:/Users/User/MyApplication4/app/src/main/res/layout/activity_episodio.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/User/MyApplication4/app/src/main/res/layout/activity_cadastro_episodio.xml" value="0.25" />
+        <entry key="..\:/Users/User/MyApplication4/app/src/main/res/layout/activity_cadastro_temporada.xml" value="0.1546875" />
+        <entry key="..\:/Users/User/MyApplication4/app/src/main/res/layout/activity_episodio.xml" value="0.2962962962962963" />
         <entry key="..\:/Users/User/MyApplication4/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/User/MyApplication4/app/src/main/res/layout/activity_main2.xml" value="0.125" />
         <entry key="..\:/Users/User/MyApplication4/app/src/main/res/layout/activity_main3.xml" value="0.125" />
@@ -18,9 +21,11 @@
         <entry key="..\:/Users/User/MyApplication4/app/src/main/res/layout/activity_quinta_tela.xml" value="0.125" />
         <entry key="..\:/Users/User/MyApplication4/app/src/main/res/layout/activity_serie.xml" value="0.22" />
         <entry key="..\:/Users/User/MyApplication4/app/src/main/res/layout/activity_serie_list.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/User/MyApplication4/app/src/main/res/layout/activity_temporada.xml" value="0.21621621621621623" />
+        <entry key="..\:/Users/User/MyApplication4/app/src/main/res/layout/activity_temporada.xml" value="0.1" />
         <entry key="..\:/Users/User/MyApplication4/app/src/main/res/layout/activity_terceira_tela.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/User/MyApplication4/app/src/main/res/layout/layout_episodio.xml" value="0.25" />
         <entry key="..\:/Users/User/MyApplication4/app/src/main/res/layout/layout_serie.xml" value="0.2247191011235955" />
+        <entry key="..\:/Users/User/MyApplication4/app/src/main/res/layout/layout_temporada.xml" value="0.25" />
         <entry key="..\:/Users/User/MyApplication4/app/src/main/res/layout/segundaTela.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/User/MyApplication4/app/src/main/res/menu/context_menu_main.xml" value="0.33" />
         <entry key="..\:/Users/User/MyApplication4/app/src/main/res/menu/menu_main.xml" value="0.22" />

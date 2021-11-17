@@ -6,7 +6,7 @@
     android:id="@+id/cadastro"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CadActivity"
+    tools:context=".CadastroTemporadaActivity"
     android:orientation="vertical">
 
     <LinearLayout
@@ -14,61 +14,51 @@
         android:layout_height="match_parent"
         android:orientation="vertical" >
 
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Cadastre os Dados da Série"
+            android:text="Cadastre os Dados da Temporada"
             android:textSize="20dp"
             android:layout_gravity="center_horizontal"/>
 
         <EditText
-            android:id="@+id/nomeEt"
+            android:id="@+id/numSquencialtempEt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName"
-            android:hint = "Nome"
+            android:hint = "num sequencial"
             android:padding="5dp"
             android:layout_margin="5dp"
             />
 
         <EditText
-            android:id="@+id/AnoEt"
+            android:id="@+id/anolancamentoTempEt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName"
-            android:hint = "Ano"
+            android:hint = "Ano de lançamento"
             android:padding="5dp"
             android:layout_margin="5dp"
             />
 
         <EditText
-            android:id="@+id/GeneroEt"
+            android:id="@+id/qtdEpisodioEt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName"
-            android:hint = "Gênero"
+            android:hint = "Quantidade de Episódios"
             android:padding="5dp"
             android:layout_margin="5dp"
             />
 
-
-        <EditText
-            android:id="@+id/EmissoraEt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:hint = "Emissora"
-            android:padding="5dp"
-            android:layout_margin="5dp"
-            />
 
 
         <Button
-            android:id="@+id/salvar"
+            android:id="@+id/salvarTemporadaBt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Salvar"

@@ -17,14 +17,14 @@ class SerieActivity : AppCompatActivity() {
         setContentView(aptvb.root)
 
         aptvb.btnAssistir.setOnClickListener {
-           iniciarSegundaTela()
+            iniciarSerieListActivity()
         }
 
     }
 
-    private fun iniciarSegundaTela() {
-        val segundaTela = Intent(this, SerieListActivity::class.java)
-       startActivity(segundaTela)
+    private fun iniciarSerieListActivity() {
+        val SerieListActivity = Intent(this, SerieListActivity::class.java)
+        startActivity(SerieListActivity)
     }
 
 

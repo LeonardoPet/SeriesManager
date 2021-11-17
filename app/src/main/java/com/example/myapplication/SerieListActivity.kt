@@ -2,19 +2,16 @@ package com.example.myapplication
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.ContextMenu
-import android.view.Menu
+
 import android.view.MenuItem
-import android.view.View
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.Toast
+
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.myapplication.adapter.SerieAdapter
+
 import com.example.myapplication.adapter.SerieRvAdapter
+import com.example.myapplication.controller.SerieController
 import com.example.myapplication.databinding.ActivitySerieListBinding
 import com.example.myapplication.model.SeriesManagerInfo
 
@@ -34,17 +31,16 @@ class SerieListActivity : AppCompatActivity(), OnSerieClickListener {
 
 
     //Data source
-    private val seriesList: MutableList<SeriesManagerInfo> = mutableListOf()
+    private val seriesList: MutableList<SeriesManagerInfo> by lazy{
+        serieController.buscarSeries()
+    }
+
+    // Controller
+    private val serieController: SerieController by lazy{
+        SerieController(this)
+    }
 
     //Adapter
- /*   private val serieAdapter: ArrayAdapter<String> by lazy{
-        ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, seriesList.run{
-            val seriesStringList = mutableListOf<String>()
-            this.forEach{serie -> seriesStringList.add(serie.toString())}
-            seriesStringList
-        })
-    }*/
-
 
 
     private val serieAdapter: SerieRvAdapter by lazy{
@@ -63,7 +59,7 @@ class SerieListActivity : AppCompatActivity(), OnSerieClickListener {
         setContentView(activityMainBinding.root)
 
 
-        inicializarSerieList()
+
 
         // Associando o Adapter e o Recycler View
         activityMainBinding.serieRecycler.adapter = serieAdapter
@@ -73,6 +69,7 @@ class SerieListActivity : AppCompatActivity(), OnSerieClickListener {
         serieActivityResultLaucher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){ resultado ->
             if(resultado.resultCode == RESULT_OK){
                 resultado.data?.getParcelableExtra<SeriesManagerInfo>(EXTRA_SERIE)?.apply{
+                    serieController.inserirSerie(this)
                     seriesList.add(this)
                     serieAdapter.notifyDataSetChanged()
                 }
@@ -84,8 +81,10 @@ class SerieListActivity : AppCompatActivity(), OnSerieClickListener {
                 val posicao = resultado.data?.getIntExtra(EXTRA_POSICAO,-1)
                 resultado.data?.getParcelableExtra<SeriesManagerInfo>(EXTRA_SERIE)?.apply{
                     if(posicao != null && posicao != -1){
+                        serieController.modificarSerie(this)
                         seriesList[posicao] = this
                         serieAdapter.notifyDataSetChanged()
+
                     }
 
                 }
@@ -97,54 +96,36 @@ class SerieListActivity : AppCompatActivity(), OnSerieClickListener {
     }
 
 
-    private fun inicializarSerieList(){
-        for (indice in 1..10){
-            seriesList.add(
-                SeriesManagerInfo(
-                    "Nome ${indice}",
-                    "Ano ${indice}",
-                    "Gênero ${indice}",
-                    "Emissora ${indice}"
-                )
-            )
-        }
-    }
 
 
 
     override fun onContextItemSelected(item: MenuItem): Boolean {
         val posicao = serieAdapter.posicao
+        val serie = seriesList[posicao]
 
         return when(item.itemId) {
             R.id.editarSerieMi -> {
                 //editar Série
-                val serie = seriesList[posicao]
                 val editarSerieIntent = Intent(this, CadActivity::class.java)
                 editarSerieIntent.putExtra(EXTRA_SERIE, serie)
                 editarSerieIntent.putExtra(EXTRA_POSICAO, posicao)
                 editarSerieActivityResultLaucher.launch(editarSerieIntent)
-
                 true
             }
             R.id.removerSerieMi -> {
                 //remover série
+                serieController.apagarSerie(serie.nome)
                 seriesList.removeAt(posicao)
                 serieAdapter.notifyDataSetChanged()
                 true
             }
             else -> { false }
-
         }
-        val serie = seriesList[posicao]
-
-        Toast.makeText(this, "${serie}", Toast.LENGTH_SHORT).show()
-        return super.onContextItemSelected(item)
     }
 
     override fun onSerieClick(posicao: Int) {
         val serie = seriesList[posicao]
-        val consultarSerieIntent = Intent(this, CadActivity::class.java)
-        consultarSerieIntent.putExtra(EXTRA_SERIE, serie)
+        val consultarSerieIntent = Intent(this, TemporadaActivity::class.java)
         startActivity(consultarSerieIntent)
     }
 }
