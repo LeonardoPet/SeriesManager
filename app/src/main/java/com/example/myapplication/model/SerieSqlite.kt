@@ -26,9 +26,7 @@ class SerieSqlite(contexto: Context): SerieDAO {
                 "${COLUNA_EMISSORA} TEXT NOT NULL);"
     //FOREIGN KEY (nome) REFERENCES TABELA_SERIE (nome)
 
-        // TABELA TEMPORADA
 
-        // TABELA EPISODIO
     }
     //Referência para o banco de dados
     private val seriesBd: SQLiteDatabase =

@@ -12,5 +12,5 @@ class SerieController (SerieListActivity: SerieListActivity) {
     fun buscarSerie(nome: String) = serieDAO.recuperarSerie(nome)
     fun buscarSeries() = serieDAO.recuperarSeries()
     fun modificarSerie(serie: SeriesManagerInfo) = serieDAO.atualizarSerie(serie)
-    fun apagarSerie(nome: String) = serieDAO.recuperarSerie(nome)
+    fun apagarSerie(nome: String) = serieDAO.removerSerie(nome)
 }

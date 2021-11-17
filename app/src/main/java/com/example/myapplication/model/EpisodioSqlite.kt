@@ -64,7 +64,7 @@ class EpisodioSqlite(contexto: Context): EpisodioDAO{
         }
     }
 
-    override fun recuperarEpisodio(): MutableList<EpisodioManagerInfo> {
+    override fun recuperarEpisodios(): MutableList<EpisodioManagerInfo> {
         val episodiosList =  mutableListOf<EpisodioManagerInfo>()
 
         val episodioCursor = episodiosBd.rawQuery("SELECT * FROM ${TABELA_EPISODIO};" , null)

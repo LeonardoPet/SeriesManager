@@ -41,8 +41,6 @@ class SerieListActivity : AppCompatActivity(), OnSerieClickListener {
     }
 
     //Adapter
-
-
     private val serieAdapter: SerieRvAdapter by lazy{
        SerieRvAdapter(this, seriesList)
     }
@@ -84,9 +82,7 @@ class SerieListActivity : AppCompatActivity(), OnSerieClickListener {
                         serieController.modificarSerie(this)
                         seriesList[posicao] = this
                         serieAdapter.notifyDataSetChanged()
-
                     }
-
                 }
             }
         }
@@ -94,8 +90,6 @@ class SerieListActivity : AppCompatActivity(), OnSerieClickListener {
 
         activityMainBinding.adicionarSerieFab.setOnClickListener {serieActivityResultLaucher.launch(Intent(this, CadActivity::class.java))}
     }
-
-
 
 
 
@@ -125,7 +119,7 @@ class SerieListActivity : AppCompatActivity(), OnSerieClickListener {
 
     override fun onSerieClick(posicao: Int) {
         val serie = seriesList[posicao]
-        val consultarSerieIntent = Intent(this, TemporadaActivity::class.java)
-        startActivity(consultarSerieIntent)
+        val consultarTemporadaIntent = Intent(this, TemporadaActivity::class.java)
+        startActivity(consultarTemporadaIntent)
     }
 }
