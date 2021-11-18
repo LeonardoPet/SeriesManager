@@ -33,6 +33,7 @@ public class CadActivity extends AppCompatActivity {
 
                     Intent resultadoIntent = new Intent();
                     resultadoIntent.putExtra(SerieListActivity.EXTRA_SERIE, serie);
+
                     // se for edição, devolver posicao
                     if (posicao != -1){
                         resultadoIntent.putExtra(SerieListActivity.EXTRA_POSICAO, posicao);

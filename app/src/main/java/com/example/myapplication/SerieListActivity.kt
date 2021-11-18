@@ -120,6 +120,7 @@ class SerieListActivity : AppCompatActivity(), OnSerieClickListener {
     override fun onSerieClick(posicao: Int) {
         val serie = seriesList[posicao]
         val consultarTemporadaIntent = Intent(this, TemporadaActivity::class.java)
+        //consultarTemporadaIntent.putExtra(EXTRA_SERIE, serie)
         startActivity(consultarTemporadaIntent)
     }
 }

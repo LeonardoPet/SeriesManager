@@ -13,15 +13,17 @@ class TemporadaSqlite(contexto: Context): TemporadaDAO {
 
         // TABELA TEMPORADA
         private val TABELA_TEMPORADA = "temporada"
-        private val COLUNA_NOME = "nome"
-        private val COLUNA_ANO = "ano"
+        private val COLUNA_NOME ="nome"
+        private val COLUNA_ANO ="ano"
+        private val COLUNA_NUM_SEQUENCIAL = "numSequencial"
         private val COLUNA_QTDEPISODIO = "qtdEpisodio"
 
         private val CRIAR_TABELA_TEMPORADA_STMT = "CREATE TABLE IF NOT EXISTS ${TABELA_TEMPORADA}(" +
                 "${COLUNA_NOME} TEXT NOT NULL PRIMARY KEY, " +
+                "${COLUNA_NUM_SEQUENCIAL} INT, " +
                 "${COLUNA_ANO} TEXT NOT NULL, " +
                 "${COLUNA_QTDEPISODIO} TEXT NOT NULL, " +
-                "FOREIGN KEY (nome) REFERENCES TABELA_SERIE (nome);"
+                "FOREIGN KEY (nome) REFERENCES TABELA_SERIE(nome));"
     }
 
     //Referência para o banco de dados
@@ -54,8 +56,10 @@ class TemporadaSqlite(contexto: Context): TemporadaDAO {
             with(temporadaCursor){
                 TemporadasManagerInfo(
                     getString(getColumnIndexOrThrow(COLUNA_NOME)),
+                    getString(getColumnIndexOrThrow(COLUNA_NUM_SEQUENCIAL)),
                     getString(getColumnIndexOrThrow(COLUNA_ANO)),
-                    getString(getColumnIndexOrThrow(COLUNA_QTDEPISODIO)),
+                    getString(getColumnIndexOrThrow(COLUNA_QTDEPISODIO))
+
                 )
             }
         }
@@ -73,8 +77,10 @@ class TemporadaSqlite(contexto: Context): TemporadaDAO {
                 temporadasList.add(
                     TemporadasManagerInfo(
                         getString(getColumnIndexOrThrow(COLUNA_NOME)),
+                        getString(getColumnIndexOrThrow(COLUNA_NUM_SEQUENCIAL)),
                         getString(getColumnIndexOrThrow(COLUNA_ANO)),
-                        getString(getColumnIndexOrThrow(COLUNA_QTDEPISODIO)),
+                        getString(getColumnIndexOrThrow(COLUNA_QTDEPISODIO))
+
                     )
                 )
             }
@@ -95,6 +101,7 @@ class TemporadaSqlite(contexto: Context): TemporadaDAO {
             put(COLUNA_NOME,temporada.nome)
             put(COLUNA_ANO, temporada.ano)
             put(COLUNA_QTDEPISODIO, temporada.qtdEpisodio)
+            put(COLUNA_NUM_SEQUENCIAL,temporada.numSequencial)
         }
     }
 }

@@ -21,7 +21,7 @@
         android:clickable="true"
         android:layout_margin="16dp"
         app:srcCompat="@drawable/ic_adicionar_serie"
-        android:contentDescription="Adicionar Serie"
+        android:contentDescription="Adicionar Temporada"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent" />
 

@@ -34,6 +34,17 @@
             />
 
         <EditText
+            android:id="@+id/nomeTempEt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint = "nome"
+            android:padding="5dp"
+            android:layout_margin="5dp"
+            />
+
+        <EditText
             android:id="@+id/anolancamentoTempEt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

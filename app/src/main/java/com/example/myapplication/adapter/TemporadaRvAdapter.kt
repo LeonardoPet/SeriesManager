@@ -18,9 +18,11 @@ class TemporadaRvAdapter (
 
     // ViewHolder
         inner class TemporadaLayoutHolder(layoutTemporadaBinding: LayoutTemporadaBinding): RecyclerView.ViewHolder(layoutTemporadaBinding.root){
+
             val numSequencialTv: TextView = layoutTemporadaBinding.numSquencialTempEt
             val anoTv: TextView = layoutTemporadaBinding.anolancamentoTempEt
             val qtdEpisodioTv: TextView =  layoutTemporadaBinding.qtdEpisodioEt
+
         }
 
 
@@ -44,6 +46,7 @@ class TemporadaRvAdapter (
             numSequencialTv.text = temporada.numSequencial
             anoTv.text = temporada.ano
             qtdEpisodioTv.text = temporada.qtdEpisodio
+
             holder.itemView.setOnClickListener{
                 onTemporadaClickListener.onTemporadaClick(position)
             }

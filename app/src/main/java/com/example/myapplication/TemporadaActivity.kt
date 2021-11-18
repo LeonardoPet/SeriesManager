@@ -84,7 +84,7 @@ class TemporadaActivity : AppCompatActivity(), OnTemporadaClickListener {
         val temporada = temporadaList[posicao]
 
         return when(item.itemId){
-            R.id.editarSerieMi ->{
+            R.id.editarTemporadaMi ->{
                 //editar temporada
                 val editarTemporadaIntent = Intent(this, CadastroTemporadaActivity::class.java)
                 editarTemporadaIntent.putExtra(EXTRA_TEMPORADA,temporada)
@@ -92,14 +92,14 @@ class TemporadaActivity : AppCompatActivity(), OnTemporadaClickListener {
                 editarTemporadaActivityResultLaucher.launch(editarTemporadaIntent)
                 true
             }
-            R.id.removerSerieMi ->{
+            R.id.removerTemporadaMi ->{
                 //remover temporada
                 temporadaController.apagarTemporada(temporada.nome)
                 temporadaList.removeAt(posicao)
                 temporadaAdapter.notifyDataSetChanged()
                 true
             }
-            else ->{false}
+            else ->{ false }
         }
     }
 

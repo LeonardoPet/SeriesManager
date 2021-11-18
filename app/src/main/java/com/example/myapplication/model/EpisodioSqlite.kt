@@ -16,12 +16,14 @@ class EpisodioSqlite(contexto: Context): EpisodioDAO{
         private val COLUNA_NOME = "nome"
         private val COLUNA_NOME_EPISODIO = "nomeEpisodio"
         private val COLUNA_TEMPO_DURACAO = "tempoDuracao"
+        private val COLUNA_NUM_SEQUENCIAL = "numSequencial"
 
         private val CRIAR_TABELA_EPISODIO_STMT = "CREATE TABLE IF NOT EXISTS ${TABELA_EPISODIO}(" +
                 "${COLUNA_NOME} TEXT NOT NULL PRIMARY KEY, " +
+                "${COLUNA_NUM_SEQUENCIAL} INT, " +
                 "${COLUNA_NOME_EPISODIO} TEXT NOT NULL, " +
                 "${COLUNA_TEMPO_DURACAO} TEXT NOT NULL, " +
-                "FOREIGN KEY (nome) REFERENCES TABELA_SERIE (nome);"
+                "FOREIGN KEY (nome) REFERENCES TABELA_SERIE (nome));"
     }
 
     //Referência para o banco de dados
@@ -54,8 +56,10 @@ class EpisodioSqlite(contexto: Context): EpisodioDAO{
             with(episodioCursor){
                 EpisodioManagerInfo(
                     getString(getColumnIndexOrThrow(COLUNA_NOME)),
+                    getString(getColumnIndexOrThrow(COLUNA_NUM_SEQUENCIAL)),
                     getString(getColumnIndexOrThrow(COLUNA_NOME_EPISODIO)),
-                    getString(getColumnIndexOrThrow(COLUNA_TEMPO_DURACAO)),
+                    getString(getColumnIndexOrThrow(COLUNA_TEMPO_DURACAO))
+
                 )
             }
         }
@@ -73,8 +77,9 @@ class EpisodioSqlite(contexto: Context): EpisodioDAO{
                 episodiosList.add(
                    EpisodioManagerInfo(
                         getString(getColumnIndexOrThrow(COLUNA_NOME)),
+                        getString(getColumnIndexOrThrow(COLUNA_NUM_SEQUENCIAL)),
                         getString(getColumnIndexOrThrow(COLUNA_NOME_EPISODIO)),
-                        getString(getColumnIndexOrThrow(COLUNA_TEMPO_DURACAO)),
+                        getString(getColumnIndexOrThrow(COLUNA_TEMPO_DURACAO))
                     )
                 )
             }
@@ -95,6 +100,7 @@ class EpisodioSqlite(contexto: Context): EpisodioDAO{
             put(COLUNA_NOME,episodio.nome)
             put(COLUNA_NOME_EPISODIO,episodio.nomeEpisodio)
             put(COLUNA_TEMPO_DURACAO, episodio.tempoDuracao)
+            put(COLUNA_NUM_SEQUENCIAL,episodio.numSequencialEp)
         }
     }
 

@@ -21,6 +21,7 @@ class EpisodioRvAdapter(
         val nomeEpisodioTv: TextView = layoutEpisodioBinding.NomeEpEt
         val duracaoTv: TextView = layoutEpisodioBinding.duracaoEpEt
 
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EpisodioLayoutHolder {
