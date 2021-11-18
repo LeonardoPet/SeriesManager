@@ -1,10 +1,10 @@
 package com.example.myapplication.adapter
 
-import android.view.LayoutInflater
-import android.view.ViewGroup
+import android.view.*
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.OnTemporadaClickListener
+import com.example.myapplication.R
 import com.example.myapplication.databinding.LayoutTemporadaBinding
 
 import com.example.myapplication.model.TemporadasManagerInfo
@@ -17,12 +17,21 @@ class TemporadaRvAdapter (
     var posicao: Int = -1
 
     // ViewHolder
-        inner class TemporadaLayoutHolder(layoutTemporadaBinding: LayoutTemporadaBinding): RecyclerView.ViewHolder(layoutTemporadaBinding.root){
-
+        inner class TemporadaLayoutHolder(layoutTemporadaBinding: LayoutTemporadaBinding): RecyclerView.ViewHolder(layoutTemporadaBinding.root),View.OnCreateContextMenuListener{
             val numSequencialTv: TextView = layoutTemporadaBinding.numSquencialTempEt
             val anoTv: TextView = layoutTemporadaBinding.anolancamentoTempEt
             val qtdEpisodioTv: TextView =  layoutTemporadaBinding.qtdEpisodioEt
+            init {
+                itemView.setOnCreateContextMenuListener(this)
+            }
 
+            override fun onCreateContextMenu(
+            menu: ContextMenu?,
+            view: View?,
+                menuInfo: ContextMenu.ContextMenuInfo?
+            ) {
+                MenuInflater(view?.context).inflate(R.menu.context_menu_temporada,menu)
+            }
         }
 
 
@@ -47,7 +56,7 @@ class TemporadaRvAdapter (
             anoTv.text = temporada.ano
             qtdEpisodioTv.text = temporada.qtdEpisodio
 
-            holder.itemView.setOnClickListener{
+            itemView.setOnClickListener{
                 onTemporadaClickListener.onTemporadaClick(position)
             }
             itemView.setOnLongClickListener{

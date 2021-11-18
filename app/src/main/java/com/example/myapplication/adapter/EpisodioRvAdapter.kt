@@ -1,10 +1,10 @@
 package com.example.myapplication.adapter
 
-import android.view.LayoutInflater
-import android.view.ViewGroup
+import android.view.*
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.EpisodioActivity
+import com.example.myapplication.R
 
 import com.example.myapplication.databinding.LayoutEpisodioBinding
 import com.example.myapplication.model.EpisodioManagerInfo
@@ -16,11 +16,22 @@ class EpisodioRvAdapter(
     var posicao: Int = -1
 
     //ViewHolder
-    inner class EpisodioLayoutHolder(layoutEpisodioBinding: LayoutEpisodioBinding): RecyclerView.ViewHolder(layoutEpisodioBinding.root){
+    inner class EpisodioLayoutHolder(layoutEpisodioBinding: LayoutEpisodioBinding): RecyclerView.ViewHolder(layoutEpisodioBinding.root),
+        View.OnCreateContextMenuListener{
         val numSequencialTv: TextView = layoutEpisodioBinding.numSquencialEpEt
         val nomeEpisodioTv: TextView = layoutEpisodioBinding.NomeEpEt
         val duracaoTv: TextView = layoutEpisodioBinding.duracaoEpEt
+        init {
+            itemView.setOnCreateContextMenuListener(this)
+        }
 
+        override fun onCreateContextMenu(
+            menu: ContextMenu?,
+            view: View?,
+            menuInfo: ContextMenu.ContextMenuInfo?
+        ) {
+            MenuInflater(view?.context).inflate(R.menu.context_menu_episodio,menu)
+        }
 
     }
 

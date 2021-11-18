@@ -53,6 +53,7 @@ class EpisodioActivity : AppCompatActivity(), OnEpisodioClickListener {
         activityMainBinding.EpisodioRecycler.adapter = episodioAdapter
         activityMainBinding.EpisodioRecycler.layoutManager = episodioLayoutManager
 
+        registerForContextMenu(activityMainBinding.EpisodioRecycler)
         episodioActivityResultLaucher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){resultado ->
             if(resultado.resultCode == RESULT_OK){
                 resultado.data?.getParcelableExtra<EpisodioManagerInfo>(EXTRA_EPISODIO)?.apply{
@@ -84,15 +85,15 @@ class EpisodioActivity : AppCompatActivity(), OnEpisodioClickListener {
         val episodio = episodioList[posicao]
 
         return when(item.itemId){
-            R.id.editarSerieMi ->{
+            R.id.editarEpisodioMi ->{
                 //editar episodio
-                val editarEpisodioIntent = Intent(this,CadastroEpisodioActivity::class.java)
+                val editarEpisodioIntent = Intent(this, CadastroEpisodioActivity::class.java)
                 editarEpisodioIntent.putExtra(EXTRA_EPISODIO, episodio)
                 editarEpisodioIntent.putExtra(EXTRA_POSICAO, posicao)
                 editarEpisodioActivityResultLaucher.launch(editarEpisodioIntent)
                 true
             }
-            R.id.removerSerieMi ->{
+            R.id.removerEpisodioMi ->{
                 //remover episodio
                 episodioController.apagarEpisodio(episodio.nome)
                 episodioList.removeAt(posicao)

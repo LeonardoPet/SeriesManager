@@ -3,7 +3,11 @@ package com.example.myapplication
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.ContextMenu
 import android.view.MenuItem
+import android.view.View
+import android.widget.AdapterView
+import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -51,6 +55,8 @@ class TemporadaActivity : AppCompatActivity(), OnTemporadaClickListener {
         activityMainBinding.temporadaRecycler.adapter = temporadaAdapter
         activityMainBinding.temporadaRecycler.layoutManager = temporadasLayoutManager
 
+        registerForContextMenu(activityMainBinding.temporadaRecycler)
+
         temporadaActivityResultLaucher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){resultado ->
             if(resultado.resultCode == RESULT_OK){
                 resultado.data?.getParcelableExtra<TemporadasManagerInfo>(EXTRA_TEMPORADA)?.apply{
@@ -79,6 +85,10 @@ class TemporadaActivity : AppCompatActivity(), OnTemporadaClickListener {
         activityMainBinding.adicionarTemporadaFab.setOnClickListener{temporadaActivityResultLaucher.launch(Intent(this, CadastroTemporadaActivity::class.java))}
     }
 
+
+
+
+
     override fun onContextItemSelected(item: MenuItem): Boolean {
         val posicao = temporadaAdapter.posicao
         val temporada = temporadaList[posicao]
@@ -101,7 +111,9 @@ class TemporadaActivity : AppCompatActivity(), OnTemporadaClickListener {
             }
             else ->{ false }
         }
+
     }
+
 
     override fun onTemporadaClick(posicao: Int) {
         val temporada = temporadaList[posicao]
