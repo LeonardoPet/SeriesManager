@@ -2,11 +2,12 @@ package com.example.myapplication.controller
 
 import com.example.myapplication.SerieListActivity
 import com.example.myapplication.model.SerieDAO
+import com.example.myapplication.model.SerieFirebase
 import com.example.myapplication.model.SerieSqlite
 import com.example.myapplication.model.SeriesManagerInfo
 
 class SerieController (SerieListActivity: SerieListActivity) {
-    private val serieDAO: SerieDAO = SerieSqlite(SerieListActivity)
+    private val serieDAO: SerieDAO = SerieFirebase()
 
     fun inserirSerie(serie: SeriesManagerInfo) = serieDAO.criarSerie(serie)
     fun buscarSerie(nome: String) = serieDAO.recuperarSerie(nome)

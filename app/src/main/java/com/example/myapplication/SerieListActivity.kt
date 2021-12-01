@@ -2,6 +2,7 @@ package com.example.myapplication
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
 
 import android.view.MenuItem
 
@@ -122,5 +123,29 @@ class SerieListActivity : AppCompatActivity(), OnSerieClickListener {
         val consultarTemporadaIntent = Intent(this, TemporadaActivity::class.java)
         //consultarTemporadaIntent.putExtra(EXTRA_SERIE, serie)
         startActivity(consultarTemporadaIntent)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_main, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean = when(item.itemId){
+        R.id.atualizarMi -> {
+            serieAdapter.notifyDataSetChanged()
+            true
+        }R.id.sairMi ->{
+            AutenticacaoFirebase.firebaseAuth.signOut()
+            finish()
+            true
+        }
+        else -> {false}
+    }
+
+    override fun onStart() {
+        super.onStart()
+        if(AutenticacaoFirebase.firebaseAuth.currentUser == null){
+            finish()
+        }
     }
 }

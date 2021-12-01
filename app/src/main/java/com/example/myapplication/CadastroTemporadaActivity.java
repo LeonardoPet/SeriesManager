@@ -52,4 +52,11 @@ public class CadastroTemporadaActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if(AutenticacaoFirebase.INSTANCE.getFirebaseAuth().getCurrentUser() == null){
+            finish();
+        }
+    }
 }

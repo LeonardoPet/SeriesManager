@@ -3,6 +3,7 @@ package com.example.myapplication
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
 import android.view.MenuItem
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
@@ -106,5 +107,30 @@ class EpisodioActivity : AppCompatActivity(), OnEpisodioClickListener {
 
     override fun onEpisodioClick(posicao: Int) {
         val episodio = episodioList[posicao]
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_main3, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean = when(item.itemId){
+        R.id.atualizarEpisodioMi -> {
+            episodioAdapter.notifyDataSetChanged()
+            true
+        }R.id.sairEpisodioMi ->{
+            AutenticacaoFirebase.firebaseAuth.signOut()
+            finish()
+            true
+        }
+        else -> {false}
+    }
+
+
+    override fun onStart() {
+        super.onStart()
+        if(AutenticacaoFirebase.firebaseAuth.currentUser == null){
+            finish()
+        }
     }
 }

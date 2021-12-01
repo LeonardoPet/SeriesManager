@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.ContextMenu
+import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.AdapterView
@@ -119,5 +120,30 @@ class TemporadaActivity : AppCompatActivity(), OnTemporadaClickListener {
         val temporada = temporadaList[posicao]
         val consultarEpidosioIntent = Intent(this, EpisodioActivity::class.java)
         startActivity(consultarEpidosioIntent)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_main2, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean = when(item.itemId){
+        R.id.atualizarTemporadaMi -> {
+            temporadaAdapter.notifyDataSetChanged()
+            true
+        }R.id.sairTemporadaMi ->{
+            AutenticacaoFirebase.firebaseAuth.signOut()
+            finish()
+            true
+        }
+        else -> {false}
+    }
+
+
+    override fun onStart() {
+        super.onStart()
+        if(AutenticacaoFirebase.firebaseAuth.currentUser == null){
+            finish()
+        }
     }
 }

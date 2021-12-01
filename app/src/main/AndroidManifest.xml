@@ -10,6 +10,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
         <activity
+            android:name=".AutenticacaoActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".CadastrarUsuarioActivity"
+            android:exported="true" />
+        <activity
+            android:name=".RecuperarSenhaActivity"
+            android:exported="true" />
+        <activity
             android:name=".CadastroEpisodioActivity"
             android:exported="true" />
         <activity
@@ -28,17 +43,9 @@
             android:name=".SerieListActivity"
             android:exported="true" />
         <activity
-            android:name=".CadastroActivity"
-            android:exported="true" />
-        <activity
             android:name=".SerieActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:exported="true" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
     </application>
 
 </manifest>
